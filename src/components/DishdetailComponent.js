@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, 
-    Button, Modal, ModalHeader, ModalBody, FormGroup, Label, Input, Row, Col} from 'reactstrap';
+    Button, Modal, ModalHeader, ModalBody, Label, Row, Col} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors,  } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
@@ -13,7 +13,6 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const rating =[1,2,3,4,5]
 
 class CommentForm extends Component {
     constructor(props){

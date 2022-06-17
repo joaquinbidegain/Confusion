@@ -1,30 +1,38 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, CardImg, CardText } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../shared/baseUrl'
+import { FadeTransform } from 'react-animation-components';
+
 
 function About(props) {
 
 
     function RenderLeader({leader}){
         return(
-            <div className='container'>
-                <h3>{leader.name}</h3>
-                <h6>{leader.designation}</h6>
-                <p>{leader.description}</p>
-            </div>
+                <div className='container'>
+                    <h3>{leader.name}</h3>
+                    <h6>{leader.designation}</h6>
+                    <p>{leader.description}</p>
+                </div>
         );
     }
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
-            <div className='row'>
-                <div className='col-12 col-md-2 m-2'>
-                    <CardImg width="100%" src={leader.image} alt={leader.name} />
+            <FadeTransform in 
+                transformProps = {{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
+                <div className='row'>
+                    <div className='col-12 col-md-2 m-2'>
+                        <CardImg width="100%" src={baseUrl + leader.image} alt={leader.name} />
+                    </div>
+                    <div className='col-12 col-md-8'>
+                        <RenderLeader leader={leader}/>
+                    </div>
                 </div>
-                <div className='col-12 col-md-8'>
-                    <RenderLeader leader={leader}/>
-                </div>
-            </div>
+            </FadeTransform>
         );
     });
 
